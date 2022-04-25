@@ -18,3 +18,15 @@ Content-Type: application/json
 {
             "newModulo": 2
 }
+
+###
+
+POST http://localhost:3003/estudante
+Content-Type: application/json
+
+{
+            "nome": "Abcd",
+            "email": "abcd@1234",
+            "data_nasc": "1988-09-12",
+            "turma_id": "1650896978133"
+}

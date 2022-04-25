@@ -4,6 +4,7 @@ import { AddressInfo } from "net";
 import { createUser } from './endpoints/createUser';
 import { getTurmas } from './endpoints/getTurmas';
 import { mudaModulo } from './endpoints/mudaModulo';
+import { createEstudante } from './endpoints/createEstudante';
 
 export const app: Express = express();
 
@@ -24,3 +25,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
 app.post('/turmas', createUser)
 app.get('/turmas', getTurmas)
 app.put('/turmas/:nome', mudaModulo)
+app.post('/estudante', createEstudante)

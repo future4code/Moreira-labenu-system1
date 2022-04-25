@@ -17,7 +17,7 @@ export const createUser = async (req: Request,res: Response) => {
 
     } catch (error: any) {
     if(error.code === "ER_DUP_ENTRY"){
-        res.status(500).send({ message: "Uma turma com esse nome já existe" })
+        res.status(400).send({ message: "Uma turma com esse nome já existe" })
     } else {
         res.send(error)
     }
