@@ -8,5 +8,5 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3003/turmas
+GET http://localhost:3003/turma
 Content-Type: application/json
