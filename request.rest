@@ -2,6 +2,19 @@ POST http://localhost:3003/turmas
 Content-Type: application/json
 
 {
-            "nome": "ABCD",
+            "nome": "Turma 03",
             "modulo": 2
+}
+
+###
+
+GET http://localhost:3003/turmas
+
+###
+
+PUT  http://localhost:3003/turmas/Turma 03
+Content-Type: application/json
+
+{
+            "newModulo": 2
 }
