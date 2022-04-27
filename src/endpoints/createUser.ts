@@ -1,26 +1,25 @@
 import { Request, Response } from "express";
-import axios from "axios";
 import { Turma } from "../types/Classes";
 import connection from "../connection";
-import express, {Express} from 'express';
-
-const app: Express = express();
 
 
-const baseUrl = "http://localhost:3003"
-
-app.post(`${baseUrl}/turmas`, async (req: Request,res: Response) => {
-    const turma: Turma = new Turma(Date.now().toString(), req.body.nome, req.body.modulo)
-    console.log(turma)
+export const createUser = async (req: Request,res: Response) => {
     try {
-        await connection("turma")
-        .insert({
-            turma
-        })
-        res.send("Success!")
+        const novaTurma: Turma = new Turma(Date.now().toString(), req.body.nome, req.body.modulo)
+        if(!novaTurma){
+            res.statusCode = 422
+            throw new Error("Nome e módulo são obrigatórios")
+        }
+       const turma =  await connection("turma")
+       
+        .insert(novaTurma)
+        res.status(201).send("Turma criada com sucesso!")
 
-    } catch (error) {
-        console.error("Erro", error)
-        return null
+    } catch (error: any) {
+    if(error.code === "ER_DUP_ENTRY"){
+        res.status(400).send({ message: "Uma turma com esse nome já existe" })
+    } else {
+        res.send(error)
     }
-})
+    }
+}

@@ -8,7 +8,7 @@ export class Turma {
 
 }
 
-class Usuario {
+export class Usuario {
     constructor(
         public id: string,
         public nome: string,
