@@ -5,3 +5,8 @@ Content-Type: application/json
             "nome": "ABCD",
             "modulo": 2
 }
+
+###
+
+GET http://localhost:3003/turmas
+Content-Type: application/json

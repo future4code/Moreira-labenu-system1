@@ -1,16 +1,9 @@
 import { Request, Response } from "express";
-import axios from "axios";
+import { app, connection } from "../";
 import { Turma } from "../types/Classes";
-import connection from "../connection";
-import express, {Express} from 'express';
 
-const app: Express = express();
-
-
-const baseUrl = "http://localhost:3003"
-
-app.post(`${baseUrl}/turmas`, async (req: Request,res: Response) => {
-    const turma: Turma = new Turma(Date.now().toString(), req.body.nome, req.body.modulo)
+app.post(`/turmas`, async (req: Request,res: Response) => {
+    const turma = new Turma(Date.now().toString(), req.body.nome, req.body.modulo)
     console.log(turma)
     try {
         await connection("turma")
@@ -24,3 +17,7 @@ app.post(`${baseUrl}/turmas`, async (req: Request,res: Response) => {
         return null
     }
 })
+
+app.get("/turmas",async (req:Request, res: Response) => {
+    console.log('rodei')
+  })
